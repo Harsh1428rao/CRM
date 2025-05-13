@@ -17,7 +17,7 @@ const openai = new OpenAI({
 // Create Bull queue for campaign processing
 const campaignQueue = new Queue('campaign-delivery', {
   redis: {
-    host: 'localhost',
+    host: 'https://crm-1-30zn.onrender.com',
     port: 6379
   }
 });

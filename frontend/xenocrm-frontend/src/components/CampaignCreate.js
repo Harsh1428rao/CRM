@@ -140,7 +140,7 @@ const CampaignCreate = () => {
 
       // Log the complete request
       console.log('Campaign creation request:', {
-        url: 'http://localhost:5000/api/campaigns',
+        url: 'https://crm-1-30zn.onrender.com/api/campaigns',
         method: 'POST',
         headers: {
           Authorization: `Bearer ${token}`,
