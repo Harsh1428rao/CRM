@@ -45,10 +45,10 @@ const Dashboard = () => {
   const fetchStats = async () => {
     try {
       const [customersRes, campaignsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/customers', {
+        axios.get('https://crm-1-30zn.onrender.com/api/customers', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }),
-        axios.get('http://localhost:5000/api/campaigns', {
+        axios.get('https://crm-1-30zn.onrender.com/api/campaigns', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
       ]);

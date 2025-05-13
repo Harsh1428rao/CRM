@@ -55,12 +55,16 @@ app.use('/api/vendor', vendorRoutes);
 app.use('/api/communication-logs', communicationLogRoutes);
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/xenocrm', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 10000, // Optional: Increases timeout for initial connection
+  socketTimeoutMS: 45000           // Optional: Keeps the connection open longer
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('MongoDB connection error:', err));
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -74,8 +78,10 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log('MongoDB connection status:', mongoose.connection.readyState === 1 ? 'connected' : 'disconnected');
 }); 
+
+console.log("Connecting to MongoDB using URI:", process.env.MONGODB_URI);

@@ -47,7 +47,7 @@ const CustomerList = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/customers', {
+      const response = await axios.get('https://crm-1-30zn.onrender.com/api/customers', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -101,7 +101,7 @@ const CustomerList = () => {
 
       if (selectedCustomer) {
         await axios.patch(
-          `http://localhost:5000/api/customers/${selectedCustomer._id}`,
+          `https://crm-1-30zn.onrender.com/api/customers/${selectedCustomer._id}`,
           customerData,
           {
             headers: {
@@ -111,7 +111,7 @@ const CustomerList = () => {
         );
       } else {
         await axios.post(
-          'http://localhost:5000/api/customers',
+          'https://crm-1-30zn.onrender.com/api/customers',
           customerData,
           {
             headers: {
@@ -134,7 +134,7 @@ const CustomerList = () => {
   const handleDelete = async (customerId) => {
     if (window.confirm('Are you sure you want to delete this customer?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/customers/${customerId}`, {
+        await axios.delete(`https://crm-1-30zn.onrender.com/api/customers/${customerId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

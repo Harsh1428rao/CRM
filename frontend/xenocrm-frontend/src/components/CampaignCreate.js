@@ -54,7 +54,7 @@ const CampaignCreate = () => {
   const fetchSegments = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/segments', {
+      const response = await axios.get('https://crm-1-30zn.onrender.com/api/segments', {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (response.data && response.data.length > 0) {
@@ -100,7 +100,7 @@ const CampaignCreate = () => {
       
       // First, test the auth using the /api/auth/me endpoint
       try {
-        const authTestResponse = await axios.get('http://localhost:5000/api/auth/me', {
+        const authTestResponse = await axios.get('https://crm-1-30zn.onrender.com/api/auth/me', {
           headers: { 
             Authorization: `Bearer ${token}`
           }
@@ -149,7 +149,7 @@ const CampaignCreate = () => {
         data: campaignData
       });
 
-      const response = await axios.post('http://localhost:5000/api/campaigns', campaignData, {
+      const response = await axios.post('https://crm-1-30zn.onrender.com/api/campaigns', campaignData, {
         headers: { 
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'
@@ -203,7 +203,7 @@ const CampaignCreate = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5000/api/campaigns/suggest-messages',
+        'https://crm-1-30zn.onrender.com/api/campaigns/suggest-messages',
         {
           description: formData.description,
           segment: segments.find(s => s._id === formData.targetSegment)?.name || ''

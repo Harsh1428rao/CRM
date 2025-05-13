@@ -52,7 +52,7 @@ const OrderList = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/orders', {
+      const response = await axios.get('https://crm-1-30zn.onrender.com/api/orders', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -67,7 +67,7 @@ const OrderList = () => {
 
   const fetchCustomers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/customers', {
+      const response = await axios.get('https://crm-1-30zn.onrender.com/api/customers', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -138,7 +138,7 @@ const OrderList = () => {
 
       if (selectedOrder) {
         await axios.patch(
-          `http://localhost:5000/api/orders/${selectedOrder._id}`,
+          `https://crm-1-30zn.onrender.com/api/orders/${selectedOrder._id}`,
           orderData,
           {
             headers: {
@@ -148,7 +148,7 @@ const OrderList = () => {
         );
       } else {
         await axios.post(
-          'http://localhost:5000/api/orders',
+          'https://crm-1-30zn.onrender.com/api/orders',
           orderData,
           {
             headers: {
@@ -168,7 +168,7 @@ const OrderList = () => {
   const handleDelete = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+        await axios.delete(`https://crm-1-30zn.onrender.com/api/orders/${orderId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
