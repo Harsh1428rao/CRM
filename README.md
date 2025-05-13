@@ -1,5 +1,4 @@
 
-````markdown
 # 🧠 XENO CRM - Customer Relationship Management System
 
 This is a full-stack CRM (Customer Relationship Management) system built as part of a project assignment. It allows vendors to manage campaigns, customers, orders, and communications in a centralized dashboard.
