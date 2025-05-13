@@ -55,12 +55,16 @@ app.use('/api/vendor', vendorRoutes);
 app.use('/api/communication-logs', communicationLogRoutes);
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/xenocrm', {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 10000, 
+  socketTimeoutMS: 45000           
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('MongoDB connection error:', err));
+
+
 
 // Error handling middleware
 app.use((err, req, res, next) => {
