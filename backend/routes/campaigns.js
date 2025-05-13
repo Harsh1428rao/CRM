@@ -56,7 +56,7 @@ campaignQueue.process(async (job) => {
 
       try {
         console.log('Calling vendor receipt for logId:', log._id, 'status:', status);
-        await axios.post('http://localhost:5000/api/vendor/receipt', {
+        await axios.post('https://crm-1-30zn.onrender.com/api/vendor/receipt', {
           logId: log._id,
           status
         });

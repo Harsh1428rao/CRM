@@ -15,11 +15,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleGoogleLogin = () => {
-<<<<<<< HEAD
     window.location.href = 'https://crm-1-30zn.onrender.com/api/auth/google';
-=======
-    window.location.href = 'http://localhost:5000/api/auth/google';
->>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
   };
 
   // Handle OAuth callback

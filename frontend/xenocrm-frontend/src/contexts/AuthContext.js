@@ -19,11 +19,7 @@ export const AuthProvider = ({ children }) => {
   const checkAuth = async (token) => {
     try {
       console.log('Checking auth with token:', token);
-<<<<<<< HEAD
       const response = await axios.get('https://crm-1-30zn.onrender.com/api/auth/me', {
-=======
-      const response = await axios.get('http://localhost:5000/api/auth/me', {
->>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
         headers: { Authorization: `Bearer ${token}` }
       });
       console.log('Auth response:', response.data);
@@ -51,11 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-<<<<<<< HEAD
       await axios.get('https://crm-1-30zn.onrender.com/api/auth/logout');
-=======
-      await axios.get('http://localhost:5000/api/auth/logout');
->>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
     } catch (error) {
       console.error('Logout error:', error);
     } finally {
