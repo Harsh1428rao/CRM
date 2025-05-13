@@ -3,7 +3,7 @@ const router = express.Router();
 const Customer = require('../models/Customer');
 const auth = require('../middleware/auth');
 
-// Get all customers
+// Geting  all customers data for the history of the customer
 router.get('/', auth, async (req, res) => {
   try {
     const customers = await Customer.find();
@@ -32,11 +32,12 @@ router.post('/', auth, async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     phone: req.body.phone,
-    totalSpend: req.body.totalSpend || 0,
-    visitCount: req.body.visitCount || 0,
+    totalSpend: req.body.totalSpend || 0,//if the do not give data set teh value 0
+    visitCount: req.body.visitCount || 0,//same here 
     lastVisit: req.body.lastVisit,
     tags: req.body.tags || [],
     metadata: req.body.metadata || {}
+    
   });
 
   try {

@@ -90,3 +90,4 @@ campaignSchema.post('save', function(doc) {
 });
 
 module.exports = mongoose.model('Campaign', campaignSchema); 
+//In this we are creating the campaign schema with the mongoose

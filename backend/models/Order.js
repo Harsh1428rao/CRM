@@ -51,3 +51,5 @@ orderSchema.pre('save', async function(next) {
 });
 
 module.exports = mongoose.model('Order', orderSchema); 
+
+//in this we are creating the schema for the order model

@@ -1,3 +1,5 @@
+
+//This will create campaign for the user as per teh created segement 
 const express = require('express');
 const router = express.Router();
 const Campaign = require('../models/Campaign');
@@ -9,7 +11,7 @@ const { OpenAI } = require('openai');
 const CommunicationLog = require('../models/CommunicationLog');
 const axios = require('axios');
 
-// Initialize OpenAI
+// Initialize OpenAI the api call of openai which will help to fecth teh data for the campaign 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -27,7 +29,9 @@ function personalizeMessage(template, customer) {
   return template.replace('{name}', customer.name);
 }
 
-// Process campaign delivery jobs
+// Process campaign delivery jobs 
+//In this we use the Bull queue to process the campaign and send teh updated data tpo teh DB to update the status of the delievry
+//We also use the redis to store an update the data and this redis after running on the local host will save  
 campaignQueue.process(async (job) => {
   const { campaignId } = job.data;
   const campaign = await Campaign.findById(campaignId);
@@ -73,7 +77,7 @@ campaignQueue.process(async (job) => {
   }, customers.length * 200);
 });
 
-// Get all campaigns
+// Getting  all campaigns from the DB
 router.get('/', auth, async (req, res) => {
   try {
     const campaigns = await Campaign.find()
@@ -85,7 +89,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// Get single campaign
+// Getting single campaign Details 
 router.get('/:id', auth, async (req, res) => {
   try {
     const campaign = await Campaign.findById(req.params.id)
@@ -103,13 +107,14 @@ router.get('/:id', auth, async (req, res) => {
 router.post('/', auth, async (req, res) => {
   try {
     // Detailed logging
+    // This we help to debug the error which were coming during teh development to check where the error was coming 
     console.log('=== Campaign Creation Request ===');
     console.log('Headers:', req.headers);
     console.log('User object:', req.user);
     console.log('User ID:', req.user?._id);
     console.log('Request body:', req.body);
 
-    // Validate user
+    // Validating the user 
     if (!req.user || !req.user._id) {
       console.error('No user or user ID in request');
       return res.status(401).json({ 
@@ -121,10 +126,10 @@ router.post('/', auth, async (req, res) => {
       });
     }
 
-    // Fetch the segment to get the audience size
+    // Fetching the segment to get the audience size and teh user 
     const segment = await Segment.findById(req.body.targetSegment);
 
-    // Create campaign data with explicit createdBy and correct audience size
+    // Creating  campaign data with explicit createdBy and correct audience size
     const campaignData = {
       name: req.body.name,
       description: req.body.description,
@@ -165,15 +170,17 @@ router.post('/', auth, async (req, res) => {
       });
     }
 
-    // Save the campaign
+    // Saving  the campaign data into the DB
     const newCampaign = await campaign.save();
     console.log('Campaign saved successfully:', {
+
       _id: newCampaign._id,
       name: newCampaign.name,
       createdBy: newCampaign.createdBy
+
     });
 
-    // Add campaign to queue
+    // Adding campaign to queue for hsitory 
     campaignQueue.add({ campaignId: newCampaign._id });
 
     res.status(201).json(newCampaign);
@@ -202,7 +209,7 @@ router.post('/', auth, async (req, res) => {
   }
 });
 
-// Update campaign
+// Updating part of the campaign
 router.patch('/:id', auth, async (req, res) => {
   try {
     const campaign = await Campaign.findById(req.params.id);
@@ -238,7 +245,7 @@ router.delete('/:id', auth, async (req, res) => {
   }
 });
 
-// Get campaign suggestions
+// Getting campaign suggestions from the OPenai api 
 router.post('/suggest-messages', auth, async (req, res) => {
   try {
     const { description, segment } = req.body;

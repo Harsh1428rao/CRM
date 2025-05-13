@@ -10,3 +10,5 @@ const communicationLogSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.model('CommunicationLog', communicationLogSchema); 
+
+// In this we are creating the schema for the Communication log

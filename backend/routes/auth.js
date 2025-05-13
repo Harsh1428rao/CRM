@@ -1,3 +1,4 @@
+// google OAuth configuration for the authentication part t check wheather the user is authenticated or not 
 const express = require('express');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
@@ -6,7 +7,7 @@ const User = require('../models/User');
 const router = express.Router();
 const auth = require('../middleware/auth');
 
-// Google OAuth configuration
+
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 passport.use(new GoogleStrategy({
@@ -46,11 +47,11 @@ passport.deserializeUser(async (id, done) => {
   }
 });
 
-// Auth routes
+// auth routes for checking 
 router.get('/google',
   passport.authenticate('google', { scope: ['profile', 'email'] })
 );
-
+//this route  after checking and taking the token will redirect the user to teh frontend which we get fetched from the .env fiel 
 router.get('/google/callback',
   passport.authenticate('google', { failureRedirect: '/login' }),
   (req, res) => {

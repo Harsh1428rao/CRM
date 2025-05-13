@@ -24,3 +24,4 @@ const userSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('User', userSchema); 
+//In this we are creating the user model for the customer

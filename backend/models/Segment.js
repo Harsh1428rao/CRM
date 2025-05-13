@@ -56,3 +56,5 @@ segmentSchema.pre('save', function(next) {
 });
 
 module.exports = mongoose.model('Segment', segmentSchema); 
+
+//In this we are creating the schema for the segement model which is used to create gruop on the basis of some given Values
