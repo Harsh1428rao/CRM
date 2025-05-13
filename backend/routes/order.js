@@ -3,7 +3,7 @@ const router = express.Router();
 const Order = require('../models/Order');
 const auth = require('../middleware/auth');
 
-// Get all orders
+// Get all orders customer
 router.get('/', auth, async (req, res) => {
   try {
     const orders = await Order.find().sort({ createdAt: -1 });
@@ -13,7 +13,7 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
-// Get single order
+// Get single order get the customer details
 router.get('/:id', auth, async (req, res) => {
   try {
     const order = await Order.findById(req.params.id);
@@ -26,7 +26,7 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
-// Create order
+// Create order for the customer
 router.post('/', auth, async (req, res) => {
   try {
     const order = new Order({
@@ -51,7 +51,6 @@ router.patch('/:id', auth, async (req, res) => {
     if (!order) {
       return res.status(404).json({ message: 'Order not found' });
     }
-
     if (req.body.customerId) order.customerId = req.body.customerId;
     if (req.body.orderNumber) order.orderNumber = req.body.orderNumber;
     if (req.body.amount) order.amount = req.body.amount;

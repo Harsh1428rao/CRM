@@ -41,7 +41,7 @@ const campaignSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true,
-    index: true // Add index for better query performance
+    index: true // add some  index for better query performance
   },
   createdAt: {
     type: Date,
@@ -53,7 +53,7 @@ const campaignSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Add pre-save middleware to ensure createdBy is set
+// added some of the  pre-save middleware
 campaignSchema.pre('save', function(next) {
   console.log('Pre-save middleware - Campaign object:', {
     _id: this._id,
@@ -76,12 +76,15 @@ campaignSchema.pre('save', function(next) {
   
   next();
 });
-
-// Add post-save middleware to verify the save
+// Added some post-save middleware to verify the save
 campaignSchema.post('save', function(doc) {
   console.log('Post-save middleware - Saved campaign:', {
+    
     _id: doc._id,
     name: doc.name,
+
+
+
     createdBy: doc.createdBy
   });
 });
