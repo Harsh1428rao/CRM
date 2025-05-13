@@ -61,7 +61,7 @@ router.get('/google/callback',
       { expiresIn: '24h' }
     );
     console.log('Created token payload:', { _id: req.user._id, email: req.user.email });
-    res.redirect(`${process.env.FRONTEND_URL || 'http://localhost:3000'}/auth/callback?token=${token}`);
+    res.redirect(`${process.env.FRONTEND_URL || 'https://crm-1-30zn.onrender.com'}/auth/callback?token=${token}`);
   }
 );
 
