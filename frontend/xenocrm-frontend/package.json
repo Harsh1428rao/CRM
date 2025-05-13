@@ -16,7 +16,11 @@
     "react-dom": "^19.1.0",
     "react-querybuilder": "^8.6.1",
     "react-router-dom": "^7.6.0",
+<<<<<<< HEAD
     "react-scripts": "^5.0.1",
+=======
+    "react-scripts": "5.0.1",
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
     "recharts": "^2.15.3",
     "web-vitals": "^2.1.4"
   },

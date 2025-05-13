@@ -91,7 +91,11 @@ const SegmentBuilder = () => {
         createdBy: user._id
       };
 
+<<<<<<< HEAD
       const response = await axios.post('https://crm-1-30zn.onrender.com/api/segments', segmentData, {
+=======
+      const response = await axios.post('http://localhost:5000/api/segments', segmentData, {
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json'

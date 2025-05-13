@@ -52,7 +52,11 @@ const OrderList = () => {
 
   const fetchOrders = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get('https://crm-1-30zn.onrender.com/api/orders', {
+=======
+      const response = await axios.get('http://localhost:5000/api/orders', {
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -67,7 +71,11 @@ const OrderList = () => {
 
   const fetchCustomers = async () => {
     try {
+<<<<<<< HEAD
       const response = await axios.get('https://crm-1-30zn.onrender.com/api/customers', {
+=======
+      const response = await axios.get('http://localhost:5000/api/customers', {
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -138,7 +146,11 @@ const OrderList = () => {
 
       if (selectedOrder) {
         await axios.patch(
+<<<<<<< HEAD
           `https://crm-1-30zn.onrender.com/api/orders/${selectedOrder._id}`,
+=======
+          `http://localhost:5000/api/orders/${selectedOrder._id}`,
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
           orderData,
           {
             headers: {
@@ -148,7 +160,11 @@ const OrderList = () => {
         );
       } else {
         await axios.post(
+<<<<<<< HEAD
           'https://crm-1-30zn.onrender.com/api/orders',
+=======
+          'http://localhost:5000/api/orders',
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
           orderData,
           {
             headers: {
@@ -168,7 +184,11 @@ const OrderList = () => {
   const handleDelete = async (orderId) => {
     if (window.confirm('Are you sure you want to delete this order?')) {
       try {
+<<<<<<< HEAD
         await axios.delete(`https://crm-1-30zn.onrender.com/api/orders/${orderId}`, {
+=======
+        await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

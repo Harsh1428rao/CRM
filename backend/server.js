@@ -58,8 +58,13 @@ app.use('/api/communication-logs', communicationLogRoutes);
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+<<<<<<< HEAD
   serverSelectionTimeoutMS: 10000, // Optional: Increases timeout for initial connection
   socketTimeoutMS: 45000           // Optional: Keeps the connection open longer
+=======
+  serverSelectionTimeoutMS: 10000, 
+  socketTimeoutMS: 45000           
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('MongoDB connection error:', err));
@@ -78,10 +83,17 @@ app.use((err, req, res, next) => {
 });
 
 // Start server
+<<<<<<< HEAD
 const PORT = process.env.PORT || 4000;
+=======
+const PORT = process.env.PORT || 5000;
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log('MongoDB connection status:', mongoose.connection.readyState === 1 ? 'connected' : 'disconnected');
 }); 
+<<<<<<< HEAD
 
 console.log("Connecting to MongoDB using URI:", process.env.MONGODB_URI);
+=======
+>>>>>>> 8af402ad195f69e7d8b30f4e0a92cb8a829c01e5
