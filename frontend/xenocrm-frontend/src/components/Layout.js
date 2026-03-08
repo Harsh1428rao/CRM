@@ -56,7 +56,7 @@ const Layout = ({ children }) => {
     <div>
       <Toolbar>
         <Typography variant="h6" noWrap component="div">
-          XenoCRM
+          CRM
         </Typography>
       </Toolbar>
       <Divider />

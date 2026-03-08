@@ -48,7 +48,7 @@ const Login = () => {
           }}
         >
           <Typography component="h1" variant="h5" sx={{ mb: 3 }}>
-            Welcome to XenoCRM
+            Welcome to CRM
           </Typography>
           <Button
             variant="contained"
